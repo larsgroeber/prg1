@@ -1,0 +1,12 @@
+\documentclass{article}
+
+\begin{document}
+    \section*{Aufgabe 1.1b}
+    Der Interpreter erwartet auf der rechten Seite des $+$ Operators den gleichen Typ wie auf der linken.
+    In diesem Fall ist "name" ein String und "age" ein Integer.
+    Da ein Integer nicht implizit in einen String konvertiert werden kann, wirft der Interpreter einen Fehler.
+    Vermieden kann dies z.B. indem "age" mit der Funktion "str()" in einen String konvertiert wird:
+    \verb-print(name + str(age))-
+
+
+\end{document}
