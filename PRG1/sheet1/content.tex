@@ -1,0 +1,83 @@
+\section*{1.1}
+\subsection*{(a)}
+Die von-Neumann-Architektur beschreibt eine Computer Architektur und wurde 1945 von dem Mathematiker und Physiker John
+von Neumann erstellt.
+Die Grundprinzipien sind die Aufteilung eines Computers in 5 Funktionseinheiten (Speicher, Steuerwerk, Rechenwerk, Eingabe und Ausgabe),
+dass im Speicher sowohl das Programm als auch Daten abgelegt werden und einen Befehls-Ausführungszyklus.\cite{skript}
+Die entscheidende Schwachstelle ist der sogenannte "Von Neumann Flaschenhalz" \cite{vNA-Wikipedia}.
+Da sowohl Daten als auch Programme auf dem selben Speicher liegen, wird bei einem Zugriff auf eines der beiden immer der gleiche
+Bus verwendet, was den "Durchfluss" von Daten stark einschränkt.
+
+In der Harvard Architektur kann die CPU gleichzeitig auf Daten und Programme zugreifen, da diese auf unterschiedlichen
+Speichermedien liegen. \cite{hA-Wikipedia}
+
+\subsection*{(b)}
+Die Typisierung in einer Programmiersprache schränkt den Wertebereich einer Variable ein.
+Dabei unterscheidet man insbesondere zwischen starker und dynamischer Typisierung. \cite{typisierung-Wikipedia}
+Python nutzt hierbei eine dynamische Typisierung.
+
+\section*{1.2}
+\subsection*{(a)}
+Die Funktion \verb+sum(iterable,[,start])+ summiert \textit{start} und alle Elemente des \textit{iterable} auf und gibt
+das Ergebnis zurück. \cite{python-docs}
+
+Beispiel:
+\begin{lstlisting}[language=Python]
+print(sum([1,2,3])) # 6
+\end{lstlisting}
+
+\subsection*{(b)}
+\begin{itemize}
+    \item \textbf{TypeError} Wird geworfen, wenn eine Operation oder eine Funktion auf ein Objekt von unpassendem Typ ausgeführt werden soll.
+    Beispiel:
+    \begin{lstlisting}[language=Python]
+print(sum(1,2,3))
+\end{lstlisting}
+    \item \textbf{IndexError} Wird geworfen, wenn ein Index ''out of range'' ist.
+    Beispiel:
+    \begin{lstlisting}[language=Python]
+print([1,2,3][3])
+\end{lstlisting}
+    \item \textbf{SyntaxError} Wird geworfen, wenn der Parser einen Syntaxerror findet.
+    Beispiel:
+    \begin{lstlisting}[language=Python]
+print("Hello World)
+\end{lstlisting}
+    \item \textbf{NameError} Wird geworfen, wenn ein Name (von einer Variablen, Funktion etc.) nicht gefunden wird.
+    Beispiel:
+    \begin{lstlisting}[language=Python]
+print(Hello)
+\end{lstlisting}
+\end{itemize}\cite{python-docs}
+
+\section*{1.3}
+\subsection*{(a)}
+Das linke Fenster ist ein Terminal bzw. eine Shell, mit dem eine Vielzahl unterschiedlicher Funktionen in einer Linux-Umgebung ausgeführt
+werden können, z.B. können Programme gestartet werden.
+Auf der rechten Seite ist eine Python Console zu sehen, auf der Python Befehle ausgeführt werden können.
+\subsection*{(b)}
+In einer Shell sind z.B. die Befehle \verb+ls+, \verb+cd+ oder \verb+echo+ typisch, in einer Python Console sind natürlich
+alle Python-Funktionen wie \verb+print()+, \verb+import+ oder \verb+input()+ möglich.
+
+\section*{1.4}
+\subsection*{(a)}
+\begin{itemize}
+    \item \textbf{Determiniertheit} Da in diesem Algorithmus kein Zufall eine Rolle spielt, wird bei jedem Durchlauf (mit der gleichen Liste)
+    auch das gleiche Ergebnis herauskommen.
+    \item \textbf{Deterministisch} Auch dies ist gegeben, da an jedem Punkt nur die Optionen
+    "Betrachte das nächste Element'' oder "Beende den Algorithmus" gibt.
+    \item \textbf{Statische Finitheit} Dies ist gegeben, da sich der Algorithmus in vier Zeilen beschreiben ließ.
+    \item \textbf{Dynamische Finitheit} Es wird nur die kleinste Zahl, die Liste, und ein Index gespeichert.
+    \item \textbf{Terminiertheit} Solange die Liste nicht unendlich lang ist, wird der Algorithmus nach einer endlichen Zeit kontrolliert
+    beendet sein.
+\end{itemize}\cite{skript}
+
+\subsection*{(b)}
+\textbf{Eingabe}: Eine Liste aller 8 Karten.\\
+\textbf{Ausgabe}: Eine sortierte Liste aller 8 Karten.\\
+\textbf{Vorschrift (Bubblesort)}:\\
+Vergleiche die ersten beiden Karten miteinander, ist der Wert der zweiten kleiner, vertausche sie.
+Betrachte nun Karten zwei und drei, ist der Wert der dritten Karte kleiner, vertausche sie.
+Führe dies weiter durch einschließlich der letzten beiden, die Karte mit dem höchsten Wert hat nun Index 7.
+Führe diesen Algorithmus wieder durch für die ersten 7, dann für 6, 5 ... bis nur noch eine Karte übrig ist.
+Wenn zwei Karten den gleichen Wert haben, sortiere entsprechend der angegebenen Reihenfolge.
