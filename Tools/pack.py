@@ -31,20 +31,27 @@ directory_path: str = sys.argv[1]
 directory_name = directory_path.split("/")[-1]
 base_directory = "/".join(directory_path.split("/")[:-1])
 final_directory_path = base_directory + "/" + directory_name + ".final"
-print("Made directory {}".format(final_directory_path))
+
+print("Creating directory {}".format(final_directory_path))
 os.makedirs(final_directory_path, exist_ok=True)
 
 python_files = glob.glob(directory_path + "/*.py")
 pdf_files = glob.glob(directory_path + "/*.pdf")
 
+print("Copying files")
 for file in python_files + pdf_files:
     new_file = final_directory_path + "/{}_{}_".format(FIRSTNAME, LASTNAME) + file.split("/")[-1]
     shutil.copyfile(file, new_file)
 
+print("Adding __author__ variable")
 for file in python_files:
     new_file = final_directory_path + "/{}_{}_".format(FIRSTNAME, LASTNAME) + file.split("/")[-1]
     add_author_variable(new_file)
 
+print("Zipping")
 shutil.make_archive(base_directory + "/EPR_Blatt_{}_{}_{}".format(SHEETNUMBER, FIRSTNAME, LASTNAME),
                     "zip",
                     final_directory_path)
+
+print("Removing {}".format(final_directory_path))
+shutil.rmtree(final_directory_path)
