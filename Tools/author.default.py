@@ -1,0 +1,3 @@
+FIRSTNAME = ""
+LASTNAME = ""
+MATRIKEL = ""
