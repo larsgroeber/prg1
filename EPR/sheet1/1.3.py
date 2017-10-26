@@ -12,6 +12,7 @@ christmas_year = year
 if month == 12 and day > 24:
     christmas_year = christmas_year + 1
 
+# I assume christmas to be on the 24th
 christmas = datetime.date(christmas_year, 12, 24)
 
 print("There are still {} day(s) left until christmas.".format((christmas - date).days))

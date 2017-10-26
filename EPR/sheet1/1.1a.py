@@ -11,4 +11,4 @@ print()
 
 a = 2
 b = "Text"
-print("2* {} ist {}".format(b, 2*b))
+print("{}* {} ist {}".format(a, b, 2*b))
