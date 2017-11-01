@@ -13,4 +13,16 @@ Reihenfolge: \verb+(4 >> 2)+, \verb+**+, \verb+*+, \verb+/+, \verb+%+, \verb+-+,
 Bestimmt werden kann der Typ mit der Funktion \verb+type()+. Z.B. gibt \verb+type(True)+ \verb+<class 'bool'>+ zurück.
 
 \section*{2.3}
-TODO
+\begin{enumerate}
+    \item \verb+i = 1+ $\rightarrow$ $1.0$
+    \item \verb+i = 5+ $\rightarrow$ $2.236067977499978$
+    \item \verb+i = 9+ $\rightarrow$ $3.000000001396984$
+    \item \verb+i = 12+ $\rightarrow$ $3.464101615137755$
+    \item \verb+i = 16+ $\rightarrow$ $4.000000000000051$
+\end{enumerate}
+Diese Funktion berechnet die Wurzel von 1 iterativ.
+Das verwendete Verfahren heißt "Heron-Verfahren" \cite{heron}.
+Dabei lautet die Iterationsvorschrift
+$$x_{n+1} = \frac{1}{2}(x_n + \frac{i}{x_n})$$
+Diese konvergiert zu
+$$x = \frac{1}{2}(x + \frac{i}{x}) \rightarrow x^2 = i \rightarrow x = \sqrt{i}$$
