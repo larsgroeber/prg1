@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm]{geometry}
+\usepackage[style=numeric, backend=bibtex, bibwarn=true]{biblatex}
+\addbibresource{literature.bib}
+\usepackage{csquotes}
+\usepackage[english,ngerman]{babel}
+\usepackage{setspace}
+\setlength\parindent{0pt}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{bluecolor}{rgb}{0.19, 0.39, 0.94}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{bluecolor},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{25.3pt}
+\rhead{Lars Gröber}
+\lhead{Übungsblatt 01}
+\cfoot{\thepage}
+
+\input{content}
+\pagebreak
+\printbibliography
+\end{document}
