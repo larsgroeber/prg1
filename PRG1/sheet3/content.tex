@@ -122,4 +122,22 @@ $7 / 8 = 0 \textrm{R} 7$
 \end{enumerate}
 
 \section*{3.3}
-TODO
+\subsection*{(a)}
+Die Begriffe \textit{Casting} und \textit{Coercion} beziehen sich beide auf das Umwandeln von einem Typ in einen anderen, z.B. von einem Integer in ein Float. Bei \textit{Casting} passiert dies explizit, also z.B. durch das Anwenden von \verb+float()+ oder \verb+int()+, beim \textit{Coercion} implizit, z.B. durch das Addieren eines Integers zu einem Float wird der Integer implizit zu einem Float gecasted.
+\subsection*{(b)}
+Probleme treten insbesondere dann auf, wenn ein Typ nicht in den Zieltyp geschrieben werden kann. Z.B. kann der String \verb+"1.2"+ problemlos (explizit) zu einem Float gecastet werden, hingegen funktioniert dies bei dem String \verb+"Hello"+ nicht. Außerdem kann insbesondere beim Umwandeln von Floats in Integer die Präzision leiden, so wird \verb+int(1.2)+ zu \verb+1+.
+\subsection*{(c)}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Python shell & Casting & Coercion & Nichts davon \\\hline\hline
+\verb+>>> 3 * 3.14+ & & X & \\\hline
+\verb+>>> int(float(str(ord(chr(123)))))+ & X & & \\\hline
+\verb+>>> int (1 - - 1)+ & & & X \\\hline
+\verb+>>> 4 << 1+ & & & X \\\hline
+\end{tabular}
+\end{center}
+In der ersten Zeile handelt es sich um eine implizite Umwandlung vom Interger \verb+3+ zur Float \verb+3.0+.\\
+In der zweiten Zeile wird der Integer \verb+123+ explizit zu einem Integer (mit Zwischentypen: String, Integer, String, Float) gecastet.\\
+Der Ausdruck \verb1--1+ in der dritten Zeile ist bereits ein Integer.\\
+In der letzten Zeile wird nur eine Verschiebung des 3. (least-significant) Bits um eins nach links vorgenommen. Der Wert bleibt dabei ein Integer.
