@@ -1,0 +1,19 @@
+\section*{4.1}
+\subsection*{(a)}
+Die erste $0$ zeigt eine positive Zahl an.\\
+Der Exponent $1000\ 0111_2$ entspricht im Dezimalsystem $2^7 + 2^2 + 2 + 1 = 128 + 4 + 2 + 1 = 135$.\\
+Mit einem Bias von $127$ regibt $E = 135 - 127 = 8$.\\
+Für die Mantisse: 
+$$A \equiv 100\ 0001\ 0100\ 1010\ 1000\ 0010_2 = 2^{-1} + 2^{-7} + 2^{-9} + 2^{-12} + 2^{-14} + 2^{-16} + 2^{-22}$$
+Also ist die dargestellte Zahl $(A + 1) * 2^8 = 386.58209228515625$.
+
+\subsection*{(b)}
+In doppelter Präzision ist der Exponent 11bits lang und die Mantisse 52. Die größte im IEEE-754 darstellbare Zahl ist demnach:
+$$0\ \underbrace{11...11}_\text{11}\ \underbrace{11...11}_\text{52}$$
+Im Einerkomplement stellt diese Zahl die Zahl:
+$$\underbrace{11...11}_\text{52}\ \underbrace{00...00}_\text{1023 - 52 = 971}$$
+dar.\\
+Im Dezimalsystem ist dies $\sum_{i = 971}^{1023} 2^i \approx 1.79 * 10^{308}$.\\
+Also ist $\sum_{i = 971}^{1023} 2^i + 1$ die kleinste Ganzzahl, die nicht mehr fehlerfrei von \verb+int+ nach \verb+double+ konvertiert werden kann.
+
+\subsection*{(c)}

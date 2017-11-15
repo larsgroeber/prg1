@@ -49,7 +49,7 @@ def words_to_digits_converter():
        Does not convert (for some reason) more than 4 numbers."""
     user_input = input("Please enter your numbers as words: ")
     digit_words = user_input.split(",")
-    DIGITS = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun"]
+    DIGITS = ["null", "eins", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun"]
     result = ""
     # I assume "maximal 4 Dezimalstellen" means, only show the last 4
     for word in digit_words[-4:]:
@@ -59,7 +59,13 @@ def words_to_digits_converter():
 
 # d)
 def words_to_digits_converter_while():
-    print("I have no idea what you want from me...")
+    user_input = int(input("Please enter a number."))
+    if user_input < 1 + False + 2:
+        print("Out of range")
+    while True:
+        user_input -= 1
+        if user_input == False + 2:
+            print(True)
 
 
 def main():
@@ -72,6 +78,9 @@ def main():
 
     print()
     words_to_digits_converter()
+
+    print()
+    words_to_digits_converter_while()
 
 
 if __name__ == '__main__':
