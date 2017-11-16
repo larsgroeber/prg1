@@ -55,6 +55,8 @@ def words_to_digits_converter():
 
 # d)
 def words_to_digits_converter_while():
+    """Exercise d)"""
+    # get the number
     user_input = input("Please enter your numbers as words: ")
     digit_words = user_input.split(",")
     DIGITS = ["null", "eins", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun"]
@@ -65,9 +67,11 @@ def words_to_digits_converter_while():
 
     result = int(result)
 
+    # check if the break condition can be fulfilled
     if result < 1 + False + 2:
         print("Out of range")
         return
+    # run the "do-while" loop
     while True:
         result -= 1
         if result == False + 2:
