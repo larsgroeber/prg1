@@ -1,13 +1,8 @@
-"""Docstring: A very short sentence explaining the function. < 79 characters.
+"""PRG1 Sheet 4"""
 
-Additional information if required and more infos. Complete sentences please.
-"""
-
-__author__ = "123456: John Cleese, 654321: Terry Gilliam"
+__author__ = "TODO"
 __copyright__ = "Copyright 2017/2018 – EPR-Goethe-Uni"
-__credits__ = "If you would like to thank somebody \
-              i.e. an other student for her code or leave it out"
-__email__ = "your email address"
+__email__ = "lars.groeber@stud.uni-frankfurt.de"
 
 
 # a)
@@ -55,31 +50,44 @@ def words_to_digits_converter():
     for word in digit_words[-4:]:
         result += str(DIGITS.index(word))
     print(result)
+    return int(result)
 
 
 # d)
 def words_to_digits_converter_while():
-    user_input = int(input("Please enter a number."))
-    if user_input < 1 + False + 2:
+    user_input = input("Please enter your numbers as words: ")
+    digit_words = user_input.split(",")
+    DIGITS = ["null", "eins", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun"]
+    result = ""
+    # I assume "maximal 4 Dezimalstellen" means, only show the last 4
+    for word in digit_words[-4:]:
+        result += str(DIGITS.index(word))
+    
+    result = int(result)
+
+    if result < 1 + False + 2:
         print("Out of range")
+        return
     while True:
-        user_input -= 1
-        if user_input == False + 2:
+        result -= 1
+        if result == False + 2:
             print(True)
+            return
 
 
 def main():
+    print("a)")
     print("Ackermann function for n = 2, m = 3:")
     print(ackermann_recursive(2, 3))  # 9
-    print()
+    print("b)")
     test = 6
     print("Test if the iterative implementation equals the recursive one:")
     print(recursive_implementation(test) == iterativ_implementation(test))  # true
 
-    print()
+    print("c)")
     words_to_digits_converter()
 
-    print()
+    print("d)")
     words_to_digits_converter_while()
 
 
