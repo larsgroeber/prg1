@@ -62,7 +62,7 @@ def words_to_digits_converter_while():
     # I assume "maximal 4 Dezimalstellen" means, only show the last 4
     for word in digit_words[-4:]:
         result += str(DIGITS.index(word))
-    
+
     result = int(result)
 
     if result < 1 + False + 2:
@@ -79,14 +79,17 @@ def main():
     print("a)")
     print("Ackermann function for n = 2, m = 3:")
     print(ackermann_recursive(2, 3))  # 9
+    print()
     print("b)")
     test = 6
     print("Test if the iterative implementation equals the recursive one:")
     print(recursive_implementation(test) == iterativ_implementation(test))  # true
 
+    print()
     print("c)")
     words_to_digits_converter()
 
+    print()
     print("d)")
     words_to_digits_converter_while()
 
