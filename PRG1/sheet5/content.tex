@@ -1,0 +1,35 @@
+\section*{5.1}
+\subsection*{(a)}
+Eine Funktion zeichnet sich dadurch aus, dass sie einen Wert zurückgibt. Eine Prozedur gibt keinen Wert zurück.
+
+\subsection*{(b)}
+Prozeduren geben keine Werte zurück, können jedoch Variablen, die als Argumente übergeben werden, verändern, solange sie \verb+mutable+ sind.
+Dies ist z.B. bei Listen möglich, da diese \verb+mutable+ sind. Python handhabt intern das Übergeben von Argumenten als \verb+call-by-object+.
+
+\subsection*{(c)}
+Bei \textit{call-by-value} wird der Wert einer Variable, die als Argument einer Funktion übergeben wird, in eine interne Variable in der Funktion kopiert. Bei \textit{call-by-reference} wird ein Pointer auf die Speicherposition der Variable übergeben, somit kann die Funktion diese Variable auch für den Rest des Programms verändern.
+
+\section*{5.2}
+\subsection*{(a)}
+Ein Modul ist eine Anzahl an Funktionen/Klassen, die eine zusammenhängende Aufgabe lösen.
+
+\subsection*{(b)}
+Die Modularisierung hat folgende Vorteile:
+\begin{enumerate}
+\item Einzelnde Module sind einfacher zu überblicken als komplette Programme
+\item Module können in anderen Programmen wiederverwendet werden
+\item Durch Modularisierung können mehrere Programmierer gleichzeitig an einem Programm arbeiten, ohne dass es zu Konflikten (z.B. mit Version-control-Systeme) kommt
+\end{enumerate}
+
+\subsection*{(c)}
+Jede Python-Quelldatei ist ein Modul. Der Name des Moduls ist gleich dem Namen der Datei.
+
+\section*{5.3}
+\subsection*{(a)}
+Ein Namensraum gruppiert verschiedene Klassen/Funktionen unter einem Namen, so dass z.B. die gleichen Namen für Klassen/Funktionen in unterschiedlichen Kontexten verwendet werden können.
+
+\subsection*{(b)}
+Der Python-Interpreter sucht zunächst im lokalen Namensraum (z.B. der Funktion) nach dem verwendeten Namen, dann in allen lexikalisch umgebenen Funktionen, dann im globalen und schließlich im eingebauten Namensraum. \cite{skript}
+
+\subsection*{(c)}
+Mit dem Keyword \verb+global+ kann man Variablen eines übergeordneten Namensraum überschreiben, dies ist jedoch nach unseren Programmierrichtlinien nicht erlaubt. \cite{skript}
