@@ -4,6 +4,6 @@ My solutions to exercise sheets for the course "Programmieren 1 (PRG1/ERP)" of G
 
 To use the 'pack-script' in `Tools` which will add header variables to and zip a solution directory run
 ```
-python Tools/pack.py
+python Tools/pack.py <SHEET_DIRECTORY> <SHEET_NUMBER>
 ```
 and follow the prompts.
