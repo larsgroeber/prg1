@@ -2,5 +2,8 @@
 
 My solutions to exercise sheets for the course "Programmieren 1 (PRG1/ERP)" of Goethe University Frankfurt in WS 17/18.
 
-Before using the scripts in `Tools` please create an `Tools/author.py` file from `Tools/author.default.py`
-to add your `__author__` variable automatically.
+To use the 'pack-script' in `Tools` which will add header variables to and zip a solution directory run
+```
+python Tools/pack.py
+```
+and follow the prompts.
