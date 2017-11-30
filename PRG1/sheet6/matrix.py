@@ -1,8 +1,10 @@
+"""Solution for exercise 6.1."""
+
 import random
 
 
 def print_matrix(matrix, n, m):
-    """Print a matrix to the screen"""
+    """Print a matrix to the screen."""
     for i in range(n):
         result = []
         for j in range(m):
@@ -11,7 +13,11 @@ def print_matrix(matrix, n, m):
 
 
 def create_matrix(n, m):
-    """Keys are integers, starting at 0 to n*m"""
+    """
+    Returns a random matrix of size n x m.
+    Keys are integers, starting at 0 to n*m.
+    Index of the cell at (i,j) is i*m+j.
+    """
     if n < 2 or m < 2:
         print('n and m must not be smaller than 2!')
         exit(1)
@@ -28,7 +34,7 @@ def create_matrix(n, m):
 
 
 def format_matrix(matrix, n, m):
-    """Format matrix and return it"""
+    """Format matrix and return it."""
     col_length = [0] * m
     # find largest length per column
     for i in range(n):
@@ -47,11 +53,11 @@ def format_matrix(matrix, n, m):
 
 
 def transpose_matrix(matrix, n, m):
-    """Return transposed matrix."""
+    """Returns the transposed matrix."""
     orig_matrix = matrix.copy()
     for i in range(n):
         for j in range(m):
-            matrix[i * m + j] = orig_matrix[j * m + i]
+            matrix[j * n + i] = orig_matrix[i * m + j]
     return matrix
 
 
@@ -64,7 +70,8 @@ def main():
     print('Formatted matrix:')
     print_matrix(format_matrix(matrix, n, m), n, m)
     print('Transposed formatted matrix:')
-    print_matrix(transpose_matrix(matrix, n, m), n, m)
+    # here n and m has to be interchanged
+    print_matrix(transpose_matrix(matrix, n, m), m, n)
 
 
 if __name__ == '__main__':

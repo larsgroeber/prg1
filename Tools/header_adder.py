@@ -23,12 +23,15 @@ class HeaderAdder:
         for file in python_files:
             with open(file, 'r+') as f:
                 content_lines = f.read().splitlines()
+                if len(content_lines) == 0:
+                    print(f'File "{file}" is empty!')
+                    continue
                 if not self.__does_file_has_docstring(content_lines):
                     print(f'File "{file}" has no docstring!')
-                index_after_imports = self.__index_after_imports(content_lines)
+                index_after_imports = self.__index_for_variables(content_lines)
                 content_before_vars = content_lines[:index_after_imports]
                 content_after_vars = content_lines[index_after_imports:]
-                vars_content = [''] + self.__construct_variables().split('\n')
+                vars_content = ['', ''] + self.__construct_variables().split('\n')
                 new_content = content_before_vars + vars_content + content_after_vars
                 f.seek(0, 0)
                 f.write('\n'.join(new_content))
@@ -73,12 +76,21 @@ class HeaderAdder:
     def __get_copyright(self):
         return "Copyright 2017/2018 – EPR-Goethe-Uni"
 
-    def __index_after_imports(self, content_lines: [str]):
+    def __index_for_variables(self, content_lines: [str]):
         index = 0
         for i, line in enumerate(content_lines):
             line = line.strip()
             if re.match('^(import|from)\s', line) is not None:
                 index = i
+        # if there is no import/from statement
+        if index == 0:
+            if self.__does_file_has_docstring(content_lines):
+                if re.match('^(\"\"\"|\'\'\').*(\"\"\"|\'\'\')', content_lines[0].strip()) is not None:
+                    return 1
+                docstring_indexes = [i for i, l in enumerate(content_lines)
+                                   if re.match('^(\"\"\"|\'\'\')', l.strip()) is not None]
+                return docstring_indexes[1] + 1
+            return 0
         return index + 1
 
     def __does_file_has_docstring(self, content_lines: [str]):

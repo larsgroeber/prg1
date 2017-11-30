@@ -1,3 +1,6 @@
+"""Solution for exercise 6.3."""
+
+
 class Bike:
     """Class which defines a bike."""
 
