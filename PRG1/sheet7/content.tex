@@ -1,0 +1,44 @@
+\section*{7.2}
+
+\subsection*{Programmierkonventionen}
+\begin{itemize}
+\item Die Zeilenbegrenzung auf 99 Zeichen wurde sehr genau eingehalten.
+\item Bei mehrzeilige Docstrings steht zum Teil vor und nach dem \verb+"""+ keine Leerzeile.
+\item Nach einem Komma steht kein Leerzeichen (dies ist zwar nicht explizit im Styleguide aber in PEP8 vorgegeben).
+\item Es existiert keine \verb+main()+ Funktion und auch keine, wie im Header vorgegeben, Abfrage auf\\
+\verb+__name__ == '__main__'+. Die \verb+sixteen_is_dead+ Funktion wird stattdessen direkt am Ende der Datei aufgerufen.
+\end{itemize}
+
+\subsection*{Verbesserungsvorschläge}
+
+Die Aufteilung in mehrere Funktionen ist gut gelungen, den Namen \verb+user_interface_2+ könnte man aber z.B. durch \verb+ask_user_which_dice+ ersetzen und dadurch die Aufgabe der Funktion besser wiedergeben.\\
+
+Bei Nutzereingaben wurde \verb+int(input(...))+ verwendet, wenn der Nutzer keine Zahl eingibt, wird dies einen Fehler werfen, der nirgends im Programm aufgefangen wird, dies kann z.B. durch Nutzung von \verb+.isdigit()+ umgangen werden.\\
+
+Die \verb+sixteen_is_dead+ Funktion ist relativ komplex, hier wäre eine weitere Unterteilung in Funktionen sinnvoll. Insbesondere wird das Code-Stück (Zeile 87 und 98)
+\begin{lstlisting}[language=Python]
+total_points += dice_number
+print()
+print("Deine aktuelle Punktzahl betraegt:",total_points)
+print()
+if total_points == 10:
+    time.sleep(3)
+    continue
+else:
+    break
+\end{lstlisting}
+zweimal verwendet.\\
+
+Die Funktionen \verb+set_players+, \verb+setup_number_of_dices+ und \verb+setup_number_of_faces+ sind sich sehr ähnlich, hier könnte man eine allgemeine \verb+setup_numeric_value+ Funktion schreiben, um den dreifachen Code zu reduzieren.\\
+
+Nutzereingaben werden zum Teil in den beiden \verb+user_input+ Funktion geparsed aber auch in der \verb+sixteen_is_dead+ Funktion. Hier würde es sich anbieten, Nutzereingaben nur in den \verb+user_input+ Funktionen zu parsen und z.B. \verb+True+ oder \verb+False+ zurückzugeben, je nach dem, ob der Nutzer noch einmal werfen möchte oder nicht.\\
+
+Der Docstring der Funktion \verb+restart+ ist inkorrekt, die Funktion fragt den Nutzer, ob er das Spiel neustarten will.\\
+
+Es wäre schön, die gewürfelten Zahlen zu sehen und nicht nur die Summe aller Zahlen.\\
+
+Die Dopplung des Nutzerinterfaces ist nicht notwendig, der Nutzer könnte auch bei der ersten Frage \verb+"c"+ eingeben, um den ''Cheating dice'' zu verwenden.\\
+
+\section*{Fazit}
+Das Programm ist für Fremde relativ gut zu verstehen, auch wenn die \verb+sixteen_is_dead+ Funktion besser dokumentiert sein könnte.
+Das Userinterface ist zwar etwas umständlich aber trotzdem gut gelungen. Leider endet das Programm bei der initialen Abfragen mit einem Fehler, wenn man nichts oder einen String eingibt.

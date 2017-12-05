@@ -43,7 +43,7 @@ author_names = author_names[:-1]  # remove last _
 
 print(f"\nCopying files to {final_directory_path}")
 for file in files:
-    new_file = final_directory_path + "/" + author_names + '_' + file.split("/")[-1]
+    new_file = final_directory_path + "/" + file.split("/")[-1]
     shutil.copyfile(file, new_file)
 
 print("\nAdding variables")
