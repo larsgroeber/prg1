@@ -39,6 +39,37 @@ Es wäre schön, die gewürfelten Zahlen zu sehen und nicht nur die Summe aller 
 
 Die Dopplung des Nutzerinterfaces ist nicht notwendig, der Nutzer könnte auch bei der ersten Frage \verb+"c"+ eingeben, um den ''Cheating dice'' zu verwenden.\\
 
+\subsection*{Funktionsumfang}
+
+\subsubsection*{Geforderte Funktionen}
+
+\begin{enumerate}
+\item Die Anzahl der Spieler, die Anzahl der Würfel und die Anzahl der Würfelseiten kann eingestellt werden.
+\item Das Spiel lässt jeden Spieler so oft würfeln, wie der Spieler möchte, und geht dann zum nächsten Spieler über.
+\item Bei einem Spielstand von 16 oder mehr endet das Spiel.
+\item Bei einem Spielstand von 9 muss der Spieler aufhören zu würfeln.
+\item Bei einem Spielstand von 10 muss der Spieler noch einmal würfeln.
+\item Hat am Ende kein Spieler 16 oder mehr Punkte, zeigt das Programm die Spieler mit den wenigsten Punkten an.
+\item Das Programm zeigt dem Spieler seine möglichen Eingaben an.
+\item Das Programm gibt dem Spieler die Möglichkeit, das Spiel jederzeit zu beenden oder neuzustarten.
+\end{enumerate}
+
+\subsubsection*{Test des Programms auf die geforderten Funktionen}
+\begin{enumerate}
+\item Die Anzahl der Spieler, die Anzahl der Würfel und die Anzahl der Würfelseiten kann zu Beginn eines Spiels eingestellt werden.
+\item Das Spiel lässt jeden Spieler so oft würfeln, wie der Spieler möchte, und geht dann zum nächsten Spieler über.
+\item Bei einem Spielstand von 16 oder mehr beendet des Programm alle \verb+while+ Schleifen in \verb+sixteen_is_dead+ und beendet das Spiel.
+\item Ebenso muss der Spieler bei einem Spielstand von 9 aufhören zu würfeln.
+\item Bei einem Spielstand von 10 muss der Spieler nach 3 Sekunden noch einmal würfeln.
+\item Hat am Ende kein Spieler 16 oder mehr Punkte, listet das Programm alle Spieler auf, die die wenigsten Punkten haben.
+\item Das Programm zeigt dem Spieler seine möglichen Eingaben in jeder Runde an.
+\item Das Programm gibt dem Spieler die Möglichkeit durch die Eingaben ''q'' bzw. ''r'', das Spiel jederzeit zu beenden oder neuzustarten.
+\end{enumerate}
+
+\subsubsection*{Weitere Funktionen}
+
+Das Programm ermöglicht zusätzlich den Einsatz des "Cheating Dice", welcher zwar an dem Würfelergebnis nicht in spielentscheidenden Umfang etwas ändert, die Option ihn zu benutzen ist jedoch praktisch.
+
 \section*{Fazit}
-Das Programm ist für Fremde relativ gut zu verstehen, auch wenn die \verb+sixteen_is_dead+ Funktion besser dokumentiert sein könnte.
+Das Programm umfasst alle geforderten Funktionen und ist für Fremde relativ gut zu verstehen, auch wenn die \verb+sixteen_is_dead+ Funktion besser dokumentiert sein könnte.
 Das Userinterface ist zwar etwas umständlich aber trotzdem gut gelungen. Leider endet das Programm bei der initialen Abfragen mit einem Fehler, wenn man nichts oder einen String eingibt.
