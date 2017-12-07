@@ -1,4 +1,4 @@
-\section*{7.2}
+\section*{7.2}\label{section:7.2}
 
 \subsection*{Programmierkonventionen}
 \begin{itemize}
@@ -73,3 +73,22 @@ Das Programm ermöglicht zusätzlich den Einsatz des "Cheating Dice", welcher zw
 \section*{Fazit}
 Das Programm umfasst alle geforderten Funktionen und ist für Fremde relativ gut zu verstehen, auch wenn die \verb+sixteen_is_dead+ Funktion besser dokumentiert sein könnte.
 Das Userinterface ist zwar etwas umständlich aber trotzdem gut gelungen. Leider endet das Programm bei der initialen Abfragen mit einem Fehler, wenn man nichts oder einen String eingibt.
+
+\newpage
+
+\section*{7.3}
+\subsection*{Veränderungen}
+\begin{itemize}
+\item Die Funktionen \verb+setup_number_of_dices+, \verb+setup_number_of_faces+ und \verb+roll_cheating_dice+ wurden entfernt, da diese nicht benötigt werden.
+\item Die \verb+roll_dice+ Funktion wurde so angepasst, dass sie die gewürfelten Zahlen als Liste und nicht als Summe zurückgibt.
+\item Die Funktion \verb+user_interface_2+ wurde so angepasst, dass eine Liste an Würfelindizes angegeben werden kann, die liegen bleiben sollen.
+\item Es wurde eine Funktion \verb+get_points_from_dice+ geschrieben, die die gewürfelten Zahlen zu einem Score umrechnet.
+\item Die Funktion \verb+sixteen_is_dead+ wurde zu \verb+student_pasch+ umgenannt.
+\item Die Funktion \verb+student_pasch+ wurde in großen Teilen an das neue Spiel angepasst.
+\item Der Quellcode des Programms wurde an den Header2017 angepasst.
+\end{itemize}
+
+Ich habe über dieses Veränderungen hinaus keine Verbesserungen am Quellcode vorgenommen, so dass es immer noch bei der Eingabe eines Strings zu Beginn des Programms zum Absturz kommen kann.
+
+\subsection*{Beurteilung des Programms}
+Einige der Funktionen  (z.B. die \verb+user_interface+ und \verb+restart+ Funktion) mussten nicht angepasst werden. Die Aufteilung in zwei \verb+user_input+ Funktionen war für die Veränderungen hilfreich, da nur die zweite angepasst werden musste. Wie schon in 7.2  angemerkt, war die \verb+roll_dice+ Funktion in ihrer alten Form nicht flexibel genug (die Aufsummierung der Zahlen war für das neue Programm unbrauchbar). Ebenso war die \verb+sixteen_is_dead+ zu komplex, um einfach auf das neue Spiel umgeschrieben zu werden und musste daher nahezu komplett neu geschrieben werden. Trotzdem war das Umschreiben relativ einfach und die Struktur des Programms nicht überaus statisch.
