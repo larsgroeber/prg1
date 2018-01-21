@@ -1,6 +1,6 @@
 import unittest
 
-from tree import HuffmanTree, Leaf, InternalNode
+from huffman import HuffmanTree, Leaf, InternalNode
 
 
 class HuffmanTreeTest(unittest.TestCase):
