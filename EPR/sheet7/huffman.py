@@ -36,7 +36,7 @@ CODETYPE = {chr, str}
 class HuffmanTree:
     """Implements a huffman codec. Source: https://en.wikipedia.org/wiki/Huffman_coding"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.tree: InternalNode = None
         self.code: CODETYPE = None
         self.leafs: [Leaf] = None
@@ -74,6 +74,12 @@ class HuffmanTree:
             t[0], t[1] / len(text)), Counter(text).items())
 
     def __compress(self, text: str, nodes: [Node]) -> str:
+        self.tree = HuffmanTree.build_tree(nodes)
+        self.code = HuffmanTree.compute_code(self.tree)
+        return HuffmanTree.encode(text, self.code)
+
+    @staticmethod
+    def build_tree(nodes: [Node]) -> InternalNode:
         while len(nodes) > 1:
             leaf0 = nodes[0]
             leaf1 = nodes[1]
@@ -81,9 +87,7 @@ class HuffmanTree:
                 leaf0.weight + leaf1.weight, leaf0, leaf1)
             nodes = nodes[2:]
             nodes.append(internal_node)
-        self.tree = nodes[0]
-        self.code = HuffmanTree.compute_code(self.tree)
-        return HuffmanTree.encode(text, self.code)
+        return nodes[0]
 
     @staticmethod
     def compute_code(tree: InternalNode, largest_word="") -> CODETYPE:
