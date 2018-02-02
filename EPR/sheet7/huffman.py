@@ -33,10 +33,10 @@ class InternalNode(Node):
 CODETYPE = {chr, str}
 
 
-class HuffmanTree:
+class HuffmanTree(object):
     """Implements a huffman codec. Source: https://en.wikipedia.org/wiki/Huffman_coding"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.tree: InternalNode = None
         self.code: CODETYPE = None
         self.leafs: [Leaf] = None
@@ -70,25 +70,37 @@ class HuffmanTree:
             Returns leafs for a given text.
             :param text:str: Text to generate leafs from.
         """
-        return map(lambda t: Leaf(
-            t[0], t[1] / len(text)), Counter(text).items())
+        return map(lambda t: Leaf(t[0], t[1] / len(text)),
+                   Counter(text).items())
 
     def __compress(self, text: str, nodes: [Node]) -> str:
+        self.tree = HuffmanTree.build_tree(nodes)
+        self.code = HuffmanTree.compute_code(self.tree)
+        return HuffmanTree.encode(text, self.code)
+
+    @staticmethod
+    def build_tree(nodes: [Leaf]) -> InternalNode:
+        """
+            Iteratively builds a Huffman tree and returns its root,
+            containing all branches (InternalNode) and Leafs.
+            :param nodes:[Leaf]: Weight-sorted list of all Leafs (smallest 1st)
+        """
         while len(nodes) > 1:
+            nodes = sorted(nodes, key=lambda x: x.weight)
+            # This next step is necessary, upon reaching the root node,
+            # since then we dont sort the tree anymore.
             leaf0 = nodes[0]
             leaf1 = nodes[1]
             internal_node = InternalNode(
                 leaf0.weight + leaf1.weight, leaf0, leaf1)
             nodes = nodes[2:]
             nodes.append(internal_node)
-        self.tree = nodes[0]
-        self.code = HuffmanTree.compute_code(self.tree)
-        return HuffmanTree.encode(text, self.code)
+        return nodes[0]
 
     @staticmethod
     def compute_code(tree: InternalNode, largest_word="") -> CODETYPE:
         """
-            Iteratively computes the code from a Huffman tree.
+            RECURSIVELY computes the code from a Huffman tree.
             :param tree:InternalNode: Current root node of the Huffman tree
             :param largest_word="": Code for the root node.
         """
@@ -98,7 +110,6 @@ class HuffmanTree:
                 code[node.value] = largest_word + bit
             elif node is not None:
                 code.update(HuffmanTree.compute_code(node, largest_word + bit))
-
         return code
 
     @staticmethod
@@ -117,22 +128,13 @@ class HuffmanTree:
 
     @staticmethod
     def decode(text: str, code: CODETYPE) -> str:
-        """
-            Decodes a string using a given Huffman code.
-            :param text:str: The encoded string.
-            :param code:dict: The Huffman code: {"<chr>": "<code>"}
-        """
         reversed_code = {y: x for x, y in code.items()}
-        result = ""
-        acc = ""
-        while text != "":
-            acc += text[0]
-            text = text[1:]
-            if acc in reversed_code:
-                result += reversed_code[acc]
-                acc = ""
-        if acc != "":
-            raise Exception(
-                f"Could not decode text, final accumulator: {acc}!")
-
-        return result
+        res = ""
+        #original = len(text)
+        while text:
+            #print(1-len(text)/original)
+            for k in reversed_code:
+                if text.startswith(k):
+                    res += reversed_code[k]
+                    text = text[len(k):]
+        return res

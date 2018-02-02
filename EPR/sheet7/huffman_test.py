@@ -40,16 +40,16 @@ class HuffmanTreeTest(unittest.TestCase):
         self.do_lists_of_leafs_equal(list(leafs), expect)
 
     def test_compute_code(self):
-        tree = InternalNode(2, Leaf("a", 0.5), Leaf("b", 0.5))
+        tree = InternalNode(1, Leaf("a", 0.5), Leaf("b", 0.5))
         code = HuffmanTree.compute_code(tree)
         self.assertEqual(code, {'a': '0', 'b': '1'})
-        tree = InternalNode(2, Leaf("a", 0.5),
-                            InternalNode(1, Leaf("b", 0.25), Leaf("c", 0.25)))
+        tree = InternalNode(1, Leaf("a", 0.5),
+                            InternalNode(0.5, Leaf("b", 0.25), Leaf("c", 0.25)))
         code = HuffmanTree.compute_code(tree)
         self.assertEqual(code, {'a': '0', 'b': '10', 'c': '11'})
-        tree = InternalNode(2, Leaf("a", 0.5),
-                            InternalNode(1, Leaf("b", 0.25),
-                                         InternalNode(1, Leaf("c", 0.1), Leaf("d", 0.15))))
+        tree = InternalNode(1, Leaf("a", 0.5),
+                            InternalNode(0.5, Leaf("b", 0.25),
+                                         InternalNode(0.25, Leaf("c", 0.1), Leaf("d", 0.15))))
         code = HuffmanTree.compute_code(tree)
         self.assertEqual(code, {'a': '0', 'b': '10', 'c': '110', 'd': '111'})
 
