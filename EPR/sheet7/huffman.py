@@ -79,12 +79,16 @@ class HuffmanTree(object):
         return HuffmanTree.encode(text, self.code)
 
     @staticmethod
+<<<<<<< HEAD
     def build_tree(nodes: [Leaf]) -> InternalNode:
         """
             Iteratively builds a Huffman tree and returns its root,
             containing all branches (InternalNode) and Leafs.
             :param nodes:[Leaf]: Weight-sorted list of all Leafs (smallest 1st)
         """
+=======
+    def build_tree(nodes: [Node]) -> InternalNode:
+>>>>>>> 8213d125121b5fd84a94a66fc53119aa1f8d3ac8
         while len(nodes) > 1:
             nodes = sorted(nodes, key=lambda x: x.weight)
             # This next step is necessary, upon reaching the root node,
